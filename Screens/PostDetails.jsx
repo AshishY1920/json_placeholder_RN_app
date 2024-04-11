@@ -7,6 +7,7 @@ import Loading from '../Components/Loading';
 import Posts from '../Components/Posts';
 import PostStyle from '../Components/Styles/PostStyle';
 
+// Post Details
 const PostDetails = () => {
   const route = useRoute();
 
