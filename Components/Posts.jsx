@@ -1,5 +1,5 @@
-import {View, Text, TouchableOpacity} from 'react-native';
-import React, {useMemo, useState} from 'react';
+import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
+import React, {useEffect, useMemo, useState} from 'react';
 import PostStyle from './Styles/PostStyle';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {useNavigation} from '@react-navigation/native';
@@ -8,21 +8,26 @@ const Posts = React.memo(({id, title, desc}) => {
   // toggle state for read more / read less
   const [toggle, setToggle] = useState(false);
 
+  // Heavy Computation code
   const [HeavyComputation, setHeavyComputation] = useState('');
 
   const toggleDescription = useMemo(() => {
     return () => {
-      const startTime = new Date().getTime();
-      let result = '';
-      // Example of heavy computation (can be replaced with actual heavy computation)
-      for (let i = 0; i < 1000000; i++) {
-        result += '0';
-      }
+      if (toggle) {
+        const startTime = new Date().getTime();
+        let result = '';
+        // Example of heavy computation (can be replaced with actual heavy computation)
+        for (let i = 0; i < 1000000; i++) {
+          result += '0';
+        }
 
-      const endTime = new Date().getTime(); // End measuring time
-      setHeavyComputation(endTime - startTime);
+        const endTime = new Date().getTime(); // End measuring time
+        setHeavyComputation(endTime - startTime);
+      }
     };
-  }, []);
+  }, [toggle]);
+
+  // Heavy Computation code
 
   const navigation = useNavigation();
 

@@ -11,6 +11,7 @@ import {
 import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/AntDesign';
+import PostStyle from './Styles/PostStyle';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
@@ -29,16 +30,9 @@ const lazyScreen = importFunc => {
 const Home = lazyScreen(() => import('../Screens/Home'));
 const PostDetails = lazyScreen(() => import('../Screens/PostDetails'));
 
+// Loading Placeholder
 const LoadingPlaceholder = React.memo(() => (
-  <View
-    style={{
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: 1,
-      backgroundColor: 'white',
-    }}>
+  <View style={PostStyle.loadingContainer}>
     <Text
       style={{
         color: '#000',
@@ -50,6 +44,7 @@ const LoadingPlaceholder = React.memo(() => (
   </View>
 ));
 
+// Home Navigation
 const HomeNavigator = React.memo(() => {
   return (
     <HomeStack.Navigator>
@@ -71,14 +66,16 @@ const HomeNavigator = React.memo(() => {
   );
 });
 
+// Tab Icons
 const tabIcons = {
   Home: {
-    name: 'restaurant-outline',
+    name: 'home',
     set: 'Ionicons',
   },
   // Replace with the actual icon names for the Home tab
 };
 
+// Custom Tab Bar
 const CustomTabBar = React.memo(({state, descriptors, navigation}) => {
   const isOk = state.routes.some(route => route.name === 'Login');
   return (
@@ -154,6 +151,7 @@ const CustomTabBar = React.memo(({state, descriptors, navigation}) => {
   );
 });
 
+// Tab Bar Starter
 const Navigation = React.memo(() => {
   // const [isLoggedIn, setLoggedIn] = useState(false);
   return (

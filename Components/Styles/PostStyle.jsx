@@ -48,12 +48,24 @@ const PostStyle = StyleSheet.create({
   ctaContainer: {
     backgroundColor: '#1c1c1c',
     alignSelf: 'flex-end',
-    paddingHorizontal: RFValue(10),
-    paddingVertical: RFValue(5),
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: RFValue(80),
+    height: RFValue(30),
     borderRadius: RFValue(5),
   },
   descriptionContainer: {
     flex: RFValue(4),
+  },
+  loadingContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    backgroundColor: 'white',
   },
 });
 
